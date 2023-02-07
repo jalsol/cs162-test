@@ -6,8 +6,8 @@ int main() {
         "hi\n"
         ;
 
-    // constexpr int num=100;
-    for(int i=0;i<100;++i){
+    constexpr int num=100;
+    for(int i=0;i<num;++i){
         std::cout<<i<<std::endl;
     }
 }
