@@ -1,0 +1,14 @@
+cmake_minimum_required(VERSION 3.22)
+project(test)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(ENABLE_DEVELOPER_MODE
+    TRUE
+    CACHE BOOL "Enable 'developer mode'")
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+
+file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS "src/*.h" "src/*.cpp")
+add_executable(${PROJECT_NAME} ${SRC_FILES})
