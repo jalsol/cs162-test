@@ -1,6 +1,3 @@
 #include "utils.hpp"
 
-int returnOne() {
-    return 1;
-}
-
+int returnOne() { return 1; }

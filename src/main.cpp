@@ -1,6 +1,6 @@
-#include "utils.hpp"
-
 #include <iostream>
+
+#include "utils.hpp"
 
 int main() {
     std::cout << "hi\n";
@@ -12,4 +12,3 @@ int main() {
         std::cout << i << std::endl;
     }
 }
-
