@@ -2,27 +2,21 @@ name: build
 on: [push, pull_request]
 
 jobs:
-  lint:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install clang-tidy
-        run: sudo apt install clang-tidy
-      - name: Install clang-format
-        run: sudo apt install clang-format
+      - name: Install dependencies
+        run: |
+          sudo apt install cmake
+          sudo apt install clang-format
+          sudo apt install clang-tidy
+      - name: Run CMake
+        run: cmake -S. -Bbuild -DCMAKE_EXPORT_COMPILE_COMMANDS=1
       - name: Run clang-tidy
-        run: clang-tidy src/*
+        run: clang-tidy src/* -p build/
       - name: Run clang-format
         run: clang-format --dry-run --Werror src/*
-  
-
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install CMake
-        run: sudo apt install cmake
-      - name: Run CMake
-        run: cmake -S . -B ./build
       - name: Run Make
-        run: make -C ./build
+        run: make -Cbuild
+
